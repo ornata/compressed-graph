@@ -103,6 +103,25 @@ class CompressedGraph {
 
             return adjacency_matrix[v].count();
         }
+
+        /* Return the number of edges in the graph. */
+        unsigned int num_edges()
+        {
+            unsigned int degree_sum = 0;
+
+            for (auto vertex : adjacency_matrix)
+            {
+                degree_sum += vertex.count();
+            }
+
+            if (degree_sum == 0) {
+                return 0;
+            }
+
+            else {
+                return degree_sum >> 1;
+            }
+        }
 };
 
 #endif
