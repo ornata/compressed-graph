@@ -87,11 +87,21 @@ class CompressedGraph {
         void complement()
         {
             unsigned int i;
-            
+
             for (i = 0; i < n; i++) {
                 adjacency_matrix[i].flip();
                 adjacency_matrix[i][i] = 0; // no loops allowed!
             }
+        }
+
+        /* Returns the degree of vertex v */
+        long degree(const unsigned int &v)
+        {
+            if (v > n) { // out of bounds, return 0
+                return -1;
+            }
+
+            return adjacency_matrix[v].count();
         }
 };
 
