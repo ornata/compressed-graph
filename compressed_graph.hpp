@@ -34,7 +34,7 @@ class CompressedGraph {
         /* Add the edge uv to G (and the edge vu).
         * Returns 1 if the edge was added, and 0 otherwise.
         */
-        int add_edge(unsigned int u, unsigned int v)
+        int add_edge(const unsigned int u, const unsigned int v)
         {
             if ((u > n) || (v > n) || adjacency_matrix[u][v] == 1) {
                 return 0;
@@ -48,7 +48,7 @@ class CompressedGraph {
         /* Remove the edge uv from G (and the edge vu).
         * Returns 1 if the edge was removed, and 0 otherwise
         */
-        int delete_edge(const unsigned int u, unsigned int v)
+        int delete_edge(const unsigned int u, const unsigned int v)
         {
             if ((u > n) || (v > n) || adjacency_matrix[u][v] == 0) {
                 return 0;
