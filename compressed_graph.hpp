@@ -33,10 +33,11 @@ class CompressedGraph {
 
         /* Add the edge uv to G (and the edge vu).
         * Returns 1 if the edge was added, and 0 otherwise.
+        * Does not allow for loops
         */
         int add_edge(const unsigned int u, const unsigned int v)
         {
-            if ((u > n) || (v > n) || adjacency_matrix[u][v] == 1) {
+            if ((u > n) || (v > n) || adjacency_matrix[u][v] == 1 || u == v) {
                 return 0;
             }
 
@@ -47,10 +48,11 @@ class CompressedGraph {
 
         /* Remove the edge uv from G (and the edge vu).
         * Returns 1 if the edge was removed, and 0 otherwise
+        * Does not allow for loops
         */
         int delete_edge(const unsigned int u, const unsigned int v)
         {
-            if ((u > n) || (v > n) || adjacency_matrix[u][v] == 0) {
+            if ((u > n) || (v > n) || adjacency_matrix[u][v] == 0 || u == v) {
                 return 0;
             }
 
@@ -62,11 +64,22 @@ class CompressedGraph {
         /* Checks if uv is an edge. Returns 1 if it is. */
         int is_edge(const unsigned int &u, const unsigned int &v)
         {
-            if ((u > n) || (v > n)) {
+            // out of bounds, or a loop
+            if ((u > n) || (v > n) || u == v) {
                 return 0;
             }
 
             return adjacency_matrix[u][v];
+        }
+
+        /* Returns 1 if v has degree 0, 0 if not, -1 if v out of bounds. */
+        int is_isolated(const unsigned int &v)
+        {
+            if (v > n)  {
+                return -1; 
+            }
+
+            return !(adjacency_matrix[v].any());
         }
 };
 
