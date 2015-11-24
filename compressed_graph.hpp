@@ -123,6 +123,7 @@ class CompressedGraph {
             }
         }
 
+        /* Return the number of vertices in G */
         unsigned int get_num_verts()
         {
             return n;
