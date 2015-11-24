@@ -109,8 +109,7 @@ class CompressedGraph {
         {
             unsigned int degree_sum = 0;
 
-            for (auto vertex : adjacency_matrix)
-            {
+            for (auto vertex : adjacency_matrix) {
                 degree_sum += vertex.count();
             }
 
