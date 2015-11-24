@@ -81,6 +81,18 @@ class CompressedGraph {
 
             return !(adjacency_matrix[v].any());
         }
+
+        /* Sets G to its complement. That is, if uv is in G, then uv is not in ~G. If uv not in G,
+        * then uv is in ~G. */
+        void complement()
+        {
+            unsigned int i;
+            
+            for (i = 0; i < n; i++) {
+                adjacency_matrix[i].flip();
+                adjacency_matrix[i][i] = 0; // no loops allowed!
+            }
+        }
 };
 
 #endif
